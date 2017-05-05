@@ -156,8 +156,6 @@ class Application(Frame):
 
         # get dictionary
         f_dict = askopenfilename()
-        if '.pldict' in f_dict:
-            return None
         loaded_dict = pickle.load(open(f_dict,'rb'))
 
         # create or update dictionary
@@ -182,13 +180,18 @@ class Application(Frame):
         # init loaded dict
         imported_dict = dict()
 
-        # get dictionary
+        # get dictionary filename
         ind = 0
         f_dict = askopenfilename()
+
+        # test if not .pldict
+        if '.pldict' in f_dict:
+            return None
+
+        # import dict
         for line in open(f_dict, 'rb'):
             ind += 1
             ntry = line.lower().replace('\n','').split(self.get_separator())
-            print self.separator.get(), ntry
             imported_dict[ntry[0]] = [ntry[1], ind]
 
         # create or update dictionary
@@ -317,6 +320,9 @@ class Application(Frame):
 
         # get set of knowns
         known = self.corr.known(self.words)
+
+        for key in dictionary.keys():
+            print isinstance(key, unicode)
 
         # write
         count = 0

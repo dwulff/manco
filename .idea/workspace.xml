@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59bf40f5-8b41-4794-9664-a2feeb30bf4b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Labrador-puppy-climbing.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/autosave/05-05-17_02:40:02en9abw.plproject" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/autosave/05-05-17_02:40:33mvhk6e.plproject" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/autosave/05-05-17_02:42:008nfagz.plproject" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/check dict.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/getWordCounts.R" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/counts/de.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dictionaries/de.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/wordlists/de.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/correct.py" afterPath="$PROJECT_DIR$/correct.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pylap.py" afterPath="$PROJECT_DIR$/pylap.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +18,8 @@
       <file leaf-file-name="pylap.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pylap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+            <state relative-caret-position="370">
+              <caret line="331" column="48" lean-forward="false" selection-start-line="331" selection-start-column="48" selection-end-line="331" selection-end-column="48" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -50,6 +40,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>tab</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -153,7 +148,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -169,8 +166,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pylap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+        <state relative-caret-position="370">
+          <caret line="331" column="48" lean-forward="false" selection-start-line="331" selection-start-column="48" selection-end-line="331" selection-end-column="48" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

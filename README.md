@@ -34,7 +34,7 @@ The dictionary can be inspected in two ways. First, by moving the mouse into the
 
 To alter entries in the dictionary, select an entry and press the **-** button, which will remove the entry from the list and make the *wrong word* the current word. 
 
-There is two ways of including a dictionary: It can be from an *.pldict* file or it can be imported from a text file. In both cases entries not presently included in any current dictionary will be added to the current dictionary. When loading from text file you must adhere to the following format: 1) one line per entry and 2) wrong and correct word form must be separated by `Settings/Separator`.
+There is two ways of including a dictionary: It can be from an *.pldict* file or it can be imported from a text file. In both cases entries not presently included in any current dictionary will be added to the current dictionary. When importing from text file you must adhere to the following format: 1) one line per entry and 2) wrong and correct word form must be separated by `Settings/Separator`. Also make sure that the last line is not empty.
 
 To save a dictionary use `File/Save/Dictionary`. The file will be stored in pylap's dictionary file format *.pldict*. 
 
