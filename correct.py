@@ -10,7 +10,7 @@ class correct:
 
         if lang == 'de':
             self.Dict = dict()
-            words = open('dictionaries/de.txt','rb').read().lower().split('\n')
+            words = open('_cwf/de.txt','rb').read().lower().split('\n')
             for word in words:
                 tmp = word.split('\t')
                 self.Dict[tmp[0]] = int(tmp[1])

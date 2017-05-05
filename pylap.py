@@ -19,7 +19,7 @@ class Application(Frame):
 
         # constants
         self.path = os.path.realpath(__file__).replace('pylap.py','')
-        self.autosave_path = self.path + 'autosave/'
+        self.autosave_path = self.path + '_autosave/'
 
         # create variables
         self.ind = IntVar()
