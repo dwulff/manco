@@ -22,7 +22,7 @@ Given a current word, displayed on the top of the screen, the program provides s
 
 - *Suggestions* In the top left corner up to three buttons display suggestions from the spellchecker. Note that set of suggestions always contains the current word. Therefore, even if there are no alternate suggestions, the current word is given as an option.
 
-- *Entry* Using the entry filed located below the suggestion buttons the correction can be entered manually. The field will present as the defaul value the current word. To enter a correction use the plus button right below the entry field.
+- *Entry* Using the entry filed located below the suggestion buttons the correction can be entered manually. The field will present as the defaul value the current word. To enter a correction use the plus button right below the entry field or press ENTER. You can also change the entry field to whatever entry in the dictionary by clicking on the respective field in the dictionary. This will pull the corrected word form from the dictionary. You can also reset the entry field content by clicking on the current word to be corrected.
 
 - *NA* To indicate that a word is not actually a word, click the **NA** button below the entry and plus fields. 
 
@@ -37,6 +37,10 @@ To alter entries in the dictionary, select an entry and press the **-** button, 
 There is two ways of including a dictionary: It can be from an *.pldict* file or it can be imported from a text file. In both cases entries not presently included in any current dictionary will be added to the current dictionary. When importing from text file you must adhere to the following format: 1) one line per entry and 2) wrong and correct word form must be separated by `Settings/Separator`. Also make sure that the last line is not empty.
 
 To save a dictionary use `File/Save/Dictionary`. The file will be stored in pylap's dictionary file format *.pldict*. 
+
+### Processing
+
+Language like German permit compound words that are correct, but not are not contained in common lists of correct word forms. In order to detect such words select `Processing/Detect compounds`. This will initiate a process that will go through all of the words and check whether the word is entirely composed of two words from the correct word form list. The detected compounds will then be removed from the list of to be corrected words and handled accordingly in exporting the data.
 
 ### Project
 
