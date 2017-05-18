@@ -1,5 +1,8 @@
-import re
+# -*- coding: utf-8 -*-
+from __future__ import division
 from collections import Counter
+import re
+
 
 class correct:
     '''proposes correction candidates'''
@@ -10,13 +13,11 @@ class correct:
 
         if lang == 'de':
             self.Dict = dict()
-            words = open('_cwf/de.txt','rb').read().lower().split('\n')
+            words = open('_cwf/de2.txt','rb').read().lower().split('\n')
             for word in words:
                 tmp = word.split('\t')
-                self.Dict[tmp[0]] = int(tmp[1])
+                self.Dict[unicode(tmp[0])] = int(tmp[1])
             self.WORDS = Counter(self.Dict)
-
-            #self.WORDS = Counter(re.findall(r'\w+', open('/Users/wulff/Dropbox (2.0)/Work/Software/spellcheck/dictionaries/de.txt').read().lower()))
 
         if lang == 'en':
             words = re.findall(r'\w+', open('/Users/wulff/nltk_data/corpora/abc/science.txt','rb').read().lower())
@@ -34,7 +35,7 @@ class correct:
         return re.findall(r'\w+', text.lower())
 
     def known(self, words):
-        "The subset of `words` that appear in the dictionary of WORDS."
+        """The subset of `words` that appear in the dictionary of WORDS."""
         return set(w for w in words if w in self.WORDS)
 
     def unknown(self, words):
@@ -44,10 +45,51 @@ class correct:
         WORDS = self.WORDS
         return [x for x in words if not (x in seen or x in WORDS or seen_add(x))]
 
+    def not_combound(self, words):
+        """Check if compound of existing words. store compounds"""
+
+        # create set of compounds
+        COMPOUNDS = set()
+
+        # create fast add function
+        COMPOUNDS_add = COMPOUNDS.add
+
+        # get lexicond of words
+        WORDS = self.WORDS
+
+        # iterate through words
+        for word in words:
+
+            # find words with partial matches
+            finds = [w for w in WORDS if w in word]
+
+            # iterate over partial matches
+            for find in finds:
+
+                # remove previously matched part
+                half = word.replace(find, '')
+
+                # check if in lexicon
+                if half in WORDS:
+                    COMPOUNDS_add(word)
+                    break
+
+        # store result
+        self.COMPOUNDS = COMPOUNDS
+
+        # return
+        return [word for word in words if word not in COMPOUNDS]
+
+    def edits0(self, word):
+        return set([word.replace('ss', 'ß'), word.replace('ß','ss'),
+                    word.replace('ä', 'ae'), word.replace('ae', 'ä'),
+                    word.replace('ö', 'oe'), word.replace('oe', 'ö'),
+                    word.replace('ü', 'ue'), word.replace('ue', 'ü')])
+
     def edits1(self, word):
         "All edits that are one edit away from `word`."
         if len(word) <= self.maxlen + 1:
-            letters    = 'abcdefghijklmnopqrstuvwxyz'
+            letters    = u'abcdefghijklmnopqrstuvwxyzüäöß'
             splits     = [(word[:i], word[i:])    for i in range(len(word) + 1)]
             deletes    = [L + R[1:]               for L, R in splits if R]
             transposes = [L + R[1] + R[0] + R[2:] for L, R in splits if len(R)>1]
@@ -59,11 +101,13 @@ class correct:
 
     def edits2(self, word):
         "All edits that are two edits away from `word`."
-        return (e2 for e1 in self.edits1(word) for e2 in self.edits1(e1))
+        return set(e2 for e1 in self.edits1(word) for e2 in self.edits1(e1))
 
     def candidates(self, word):
         "Generate possible spelling corrections for word."
-        return (self.known([word]) or self.known(self.edits1(word)) or self.known(self.edits2(word)) or [word])
+        return sorted(self.known(self.edits0(word)), key = self.P, reverse = True) + \
+               sorted(self.known(self.edits1(word)), key = self.P, reverse = True) + \
+               sorted(self.known(self.edits2(word)), key = self.P, reverse = True)
 
     def P(self, word):
         "Probability of `word`."
@@ -75,7 +119,8 @@ class correct:
 
     def correct_n(self, word, n):
         # sort by P(word)
-        cand = sorted(self.candidates(word), key = self.P)
+        #cand = sorted(self.candidates(word), key = self.P)
+        cand = self.candidates(word)
         return cand[:n]
 
     def count(self):
@@ -84,4 +129,3 @@ class correct:
     def word(self, word, n = 10):
         if self.known([word]): return []
         return self.correct_n(word.lower(), n)
-
