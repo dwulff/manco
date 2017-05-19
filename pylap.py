@@ -64,6 +64,9 @@ class Application(Frame):
         # define containers
         self.accepts = set()
 
+        # create set of compounds
+        self.compounds = set()
+
         # create variables
         self.ind = IntVar()
         self.ind_text = StringVar()
@@ -198,6 +201,8 @@ class Application(Frame):
             self.project['len'] = self.len_unknowns
         if hasattr(self, 'dictionary'):
             self.project['dict'] = self.dictionary
+        if hasattr(self, 'compounds'):
+            self.project['compounds'] = self.compounds
 
     def handle_project(self):
 
@@ -226,6 +231,9 @@ class Application(Frame):
             self.len_unknowns = project['len']
             self.show_header()
             self.show_input()
+
+        if 'compounds' in project.keys():
+            self.compounds = project['compounds']
 
     def check_wordlist(self):
 
@@ -279,35 +287,47 @@ class Application(Frame):
         # get filename
         f_words = askopenfilename()
 
-        # read and preprocess
-        self.words = open(f_words, 'rb').read().lower().replace('\n',self.get_separator())
+        if '.txt' in f_words or '.csv' in f_words:
 
-        # split and remove white
-        self.words = [unicode(word.strip()) for word in self.words.split(self.get_separator())]
+            # read and preprocess
+            self.words = open(f_words, 'rb').read().lower().replace('\n',self.get_separator())
 
-        # determine unknowns and number of unknowns
-        self.unknowns = self.corr.unknown(self.words)
-        self.len_unknowns = len(self.unknowns)
+            # split and remove white
+            self.words = [unicode(word.strip()) for word in self.words.split(self.get_separator())]
 
-        # initialize dictionary (if not loaded)
-        if not hasattr(self,'dictionary'):
-            self.dictionary = dict()
+            # determine unknowns and number of unknowns
+            self.unknowns = self.corr.unknown(self.words)
+            self.len_unknowns = len(self.unknowns)
 
-        # start if words exist
-        if hasattr(self, 'words'):
+            # initialize dictionary (if not loaded)
+            if not hasattr(self,'dictionary'):
+                self.dictionary = dict()
+            else:
 
-            # destroy instruct
-            self.instruct.grid_remove()
+                # reduce self.unknowns using dictionary
+                self.unknowns = [word for word in self.unknowns if word not in self.dictionary.keys()]
 
-            # show widgets
-            self.show_header()
-            self.show_input()
-            self.show_listbox()
+                # set new length of self unknowns
+                self.len_unknowns = len(self.unknowns)
 
-            # next item
-            self.next()
+            # start if words exist
+            if hasattr(self, 'words'):
+
+                # destroy instruct
+                self.instruct.grid_remove()
+
+                # show widgets
+                self.show_header()
+                self.show_input()
+                self.show_listbox()
+
+                # next item
+                self.next()
+            else:
+                self.instruct['text'] = 'Word list missing. Please load word list.'
+
         else:
-            self.instruct['text'] = 'Word list missing. Please load word list.'
+            showwarning('Wrong filetype', 'Can only load .txt and .csv')
 
 
     def open_project(self):
@@ -385,6 +405,25 @@ class Application(Frame):
             showwarning('Wrong filetype', 'Can only load *.pldict files.')
 
 
+        # reduce unknown
+        if hasattr(self, 'words'):
+
+            # add word to front of unknowns
+            self.unknowns = [self.curr_word.get()] + self.unknowns
+
+            # set index back
+            self.ind.set(self.ind.get() - 1)
+
+            # reduce self.unknowns using dictionary
+            self.unknowns = [word for word in self.unknowns if word not in self.dictionary.keys()]
+
+            # set new length of self unknowns
+            self.ind.set(self.len_unknowns - len(self.unknowns))
+
+            # next item, which is removed item
+            self.next()
+
+
     def import_dictionary(self):
         """
         Function loads a dictionary from text file. Text file must have two columns with each row containing pairs of
@@ -430,6 +469,25 @@ class Application(Frame):
 
         else:
             showwarning('Wrong filetype', 'Can only import *.txt and *.csv files.')
+
+
+        # reduce unknown
+        if hasattr(self, 'words'):
+
+            # add word to front of unknowns
+            self.unknowns = [self.curr_word.get()] + self.unknowns
+
+            # set index back
+            self.ind.set(self.ind.get() - 1)
+
+            # reduce self.unknowns using dictionary
+            self.unknowns = [word for word in self.unknowns if word not in self.dictionary.keys()]
+
+            # set new length of self unknowns
+            self.ind.set(self.len_unknowns - len(self.unknowns))
+
+            # next item, which is removed item
+            self.next()
 
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -518,7 +576,7 @@ class Application(Frame):
         known = self.corr.known(self.words)
 
         # get known compounds
-        compounds = self.COMPOUNDS
+        compounds = self.compounds
 
         # get accepts
         accepts = self.accepts
@@ -647,11 +705,8 @@ class Application(Frame):
 
     def identify_compounds(self):
 
-        # create set of compounds
-        COMPOUNDS = set()
-
         # create fast add function
-        COMPOUNDS_add = COMPOUNDS.add
+        compounds_add = self.compounds.add
 
         # get lexicond of words
         WORDS = self.corr.WORDS
@@ -688,14 +743,11 @@ class Application(Frame):
 
                 # check if in lexicon
                 if half in WORDS:
-                    COMPOUNDS_add(word)
+                    compounds_add(word)
                     break
 
-        # store result
-        self.COMPOUNDS = COMPOUNDS
-
         # reset unknowns
-        self.unknowns = [word for word in words if word not in COMPOUNDS] + [self.curr_word.get()]
+        self.unknowns = [word for word in words if word not in self.compounds] + [self.curr_word.get()]
         self.len_unknowns = len(self.unknowns)
 
         # reset index
@@ -891,17 +943,19 @@ class Application(Frame):
         Change entry to listbox select.
         """
 
-        # get active entry
-        index = event.widget.curselection()[0]
-        entry = event.widget.get(index)
+        if self.listbox.size() > 0:
 
-        # update entry default text to new word
-        self.entry.delete(0, END)
-        self.entry.insert(0, entry.strip().split(' ' + u'\u2192' + ' ')[1])
-        self.entry.update()
+            # get active entry
+            index = event.widget.curselection()[0]
+            entry = event.widget.get(index)
 
-        # set focus back to entry
-        self.entry.focus_set()
+            # update entry default text to new word
+            self.entry.delete(0, END)
+            self.entry.insert(0, entry.strip().split(' ' + u'\u2192' + ' ')[1])
+            self.entry.update()
+
+            # set focus back to entry
+            self.entry.focus_set()
 
     def update_listbox(self):
         """
@@ -978,10 +1032,16 @@ class Application(Frame):
         if self.listbox.curselection() is not ():
 
             # get entry pair
-            item = self.listbox.get(ACTIVE).strip().split(' ' + u'\u2192' + ' ')[0]
+            entry = self.listbox.get(ACTIVE).strip().split(' ' + u'\u2192' + ' ')
+            item = entry[0]
+            rplc = entry[1]
 
             # remove item from dictionary
             del self.dictionary[item]
+
+            # remove item from accept list
+            if rplc in self.accepts:
+                self.accepts.remove(rplc)
 
             # update litsbox using reduced dictionary
             self.update_listbox()

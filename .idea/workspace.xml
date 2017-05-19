@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59bf40f5-8b41-4794-9664-a2feeb30bf4b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/getTweets.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_autosave/test.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_bin/check dict.py" afterPath="$PROJECT_DIR$/_bin/check dict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/correct.py" afterPath="$PROJECT_DIR$/correct.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pylap.py" afterPath="$PROJECT_DIR$/pylap.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +17,8 @@
       <file leaf-file-name="pylap.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pylap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="910" column="27" lean-forward="true" selection-start-line="910" selection-start-column="27" selection-end-line="910" selection-end-column="27" />
+            <state relative-caret-position="176">
+              <caret line="749" column="77" lean-forward="false" selection-start-line="749" selection-start-column="68" selection-end-line="749" selection-end-column="77" />
               <folding>
                 <element signature="e#24#55#0" expanded="true" />
               </folding>
@@ -68,12 +61,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bin</find>
-      <find>corr_</find>
-      <find>corr_wo</find>
-      <find>stem</find>
-      <find>stemmer</find>
-      <find>export</find>
       <find>bind</find>
       <find>header</find>
       <find>expor</find>
@@ -98,6 +85,12 @@
       <find>focus</find>
       <find>change</find>
       <find>focus_se</find>
+      <find>remove</find>
+      <find>accept</find>
+      <find>load</find>
+      <find>load_d</find>
+      <find>COMPOUNDS</find>
+      <find>compounds</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,16 +102,16 @@
         <option value="$PROJECT_DIR$/tree parsing.py" />
         <option value="$PROJECT_DIR$/../../Projects/Side projects/00 Friends/Mattea/tree parsing.py" />
         <option value="$PROJECT_DIR$/getTweets.py" />
-        <option value="$PROJECT_DIR$/../../Projects/Side projects/29 BrandPersonality/BP/3.3 Dirks Desktop/processTwiets.py" />
         <option value="$PROJECT_DIR$/_bin/check dict.py" />
         <option value="$PROJECT_DIR$/correct.py" />
+        <option value="$PROJECT_DIR$/../../Projects/Side projects/29 BrandPersonality/BP/3.3 Dirks Desktop/processTwiets.py" />
         <option value="$PROJECT_DIR$/pylap.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="720" />
+    <option name="width" value="1048" />
     <option name="height" value="873" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -269,10 +262,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="720" height="873" extended-state="0" />
+    <frame x="0" y="23" width="1048" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13472222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09255725" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -377,10 +370,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_bin/check dict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../Projects/Side projects/29 BrandPersonality/BP/3.3 Dirks Desktop/processTwiets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="73" column="72" lean-forward="true" selection-start-line="73" selection-start-column="72" selection-end-line="73" selection-end-column="72" />
+        <state relative-caret-position="353">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -394,20 +398,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_bin/check dict.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pylap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="910" column="27" lean-forward="true" selection-start-line="910" selection-start-column="27" selection-end-line="910" selection-end-column="27" />
+        <state relative-caret-position="176">
+          <caret line="749" column="77" lean-forward="false" selection-start-line="749" selection-start-column="68" selection-end-line="749" selection-end-column="77" />
           <folding>
             <element signature="e#24#55#0" expanded="true" />
           </folding>
