@@ -115,7 +115,7 @@ class Application(Frame):
         """
 
         # create a toplevel menu
-        self.parent.title("spellchecker")
+        self.parent.title("Pylap")
         menubar = Menu(self.parent)
         self.parent.configure(menu=menubar)
 
