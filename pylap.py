@@ -633,7 +633,7 @@ class Application(Frame):
                 indices = [index for index, value in enumerate(self.stem_words) if value == word]
 
                 # collect lemmas
-                candidates = [self.words[i] for i in indices]
+                candidates = [self.corr_words[i] for i in indices]
 
                 # get most frequent
                 self.count = Counter(candidates)
@@ -1274,7 +1274,7 @@ sys.setdefaultencoding('utf8')
 
 # start GUI
 root = Tk()
-root.title('Spellchecker')
+root.title('Pylap')
 root.geometry('500x480')
 
 # give weight to left column
