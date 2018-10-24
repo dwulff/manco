@@ -10,7 +10,7 @@ import sys, re, os, pickle, nltk, time, random, ttk
 import numpy as np
 
 class Application(Frame):
-    """pylap"""
+    """manco"""
 
     # ------------------------------------------------------------------------------------------------------------------
     #       INIT
@@ -58,7 +58,7 @@ class Application(Frame):
         """
 
         # define paths
-        self.path = os.path.realpath(__file__).replace('pylap.py','')
+        self.path = os.path.realpath(__file__).replace('manco.py','')
         self.autosave_path = self.path + '_autosave/'
 
         # define containers
@@ -115,7 +115,7 @@ class Application(Frame):
         """
 
         # create a toplevel menu
-        self.parent.title("Pylap")
+        self.parent.title("Manco")
         menubar = Menu(self.parent)
         self.parent.configure(menu=menubar)
 
@@ -339,8 +339,8 @@ class Application(Frame):
         # get project
         self.f_proj = askopenfilename()
 
-        # test if .plproject
-        if '.plproject' in self.f_proj:
+        # test if .mancoproject
+        if '.mancoproject' in self.f_proj:
 
             # handle project
             self.handle_project()
@@ -349,7 +349,7 @@ class Application(Frame):
             self.check_wordlist()
 
         else:
-            showwarning('Wrong filetype', 'Can only load *.plproject files.')
+            showwarning('Wrong filetype', 'Can only load *.mancoproject files.')
 
 
     def open_autosave(self):
@@ -361,8 +361,8 @@ class Application(Frame):
         # get project
         self.f_proj = askopenfilename(initialdir = self.autosave_path)
 
-        # test if .plproject
-        if '.plproject' in self.f_proj:
+        # test if .mancoproject
+        if '.mancoproject' in self.f_proj:
 
             # handle project
             self.handle_project()
@@ -371,7 +371,7 @@ class Application(Frame):
             self.check_wordlist()
 
         else:
-            showwarning('Wrong filetype', 'Can only load *.plproject files.')
+            showwarning('Wrong filetype', 'Can only load *.mancoproject files.')
 
 
 
@@ -388,8 +388,8 @@ class Application(Frame):
         # load dictionary
         loaded_dict = pickle.load(open(f_dict,'rb'))
 
-        # test if .plproject
-        if '.pldict' in f_dict:
+        # test if .mancoproject
+        if '.mancodict' in f_dict:
 
             # handle dictionary
             self.handle_dictionary(loaded_dict)
@@ -402,7 +402,7 @@ class Application(Frame):
                 self.instruct['text'] = 'Dictionary loaded. Please load word list.'
 
         else:
-            showwarning('Wrong filetype', 'Can only load *.pldict files.')
+            showwarning('Wrong filetype', 'Can only load *.mancodict files.')
 
 
         # reduce unknown
@@ -496,14 +496,14 @@ class Application(Frame):
 
     def save_dictionary(self):
         """
-        Function saves dictionary as *.pldict file. 
+        Function saves dictionary as *.mancodict file. 
         """
 
         # check if there is a dictionary
         if hasattr(self, 'dictionary'):
 
             # get filename
-            f_dict = asksaveasfilename(defaultextension = '.pldict')
+            f_dict = asksaveasfilename(defaultextension = '.mancodict')
 
             # dump dictionary as pickle
             pickle.dump(self.dictionary, open(f_dict, 'wb'), pickle.HIGHEST_PROTOCOL)
@@ -513,14 +513,14 @@ class Application(Frame):
 
     def save_project(self):
         """
-        Function saves project as *.plproject file. 
+        Function saves project as *.mancoproject file. 
         """
 
         # create project
         self.create_project()
 
         # get filename
-        f_proj = asksaveasfilename(defaultextension = '.plproject')
+        f_proj = asksaveasfilename(defaultextension = '.mancoproject')
 
         # dump project as pickle
         pickle.dump(self.project, open(f_proj, 'wb'), pickle.HIGHEST_PROTOCOL)
@@ -548,7 +548,7 @@ class Application(Frame):
             self.code = ''.join(letters[:6])
 
             # determine autosave filename
-            self.autosave_f = self.autosave_path + time.strftime("%d-%m-%y_%H:%M:%S") + self.code + '.plproject'
+            self.autosave_f = self.autosave_path + time.strftime("%d-%m-%y_%H:%M:%S") + self.code + '.mancoproject'
 
         # create project
         self.create_project()
@@ -1274,7 +1274,7 @@ sys.setdefaultencoding('utf8')
 
 # start GUI
 root = Tk()
-root.title('Pylap')
+root.title('Manco')
 root.geometry('500x480')
 
 # give weight to left column

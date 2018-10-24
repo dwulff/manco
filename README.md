@@ -1,6 +1,6 @@
-# **pylap**
+# **manco**
 
-**pylap** (python language processing) is a graphical user interface written in python using the tkinter library. It has been build to enable semi-automaized spelling correction and processing of human language data. It incorporates a simple spelling correction algorith, which is based on Peter Norvig's work (http://norvig.com/spell-correct.html), and the Snowball stemmer of Python's nltk library (http://www.nltk.org/).
+**manco** is a graphical user interface for semi-automaized, **man**ual spelling **co**rrection and processing of human language data written in python using the tkinter library. It incorporates a simple spelling correction algorithm based on Peter Norvig's tutorial (http://norvig.com/spell-correct.html) and the Snowball stemmer of Python's nltk library (http://www.nltk.org/).
 
 ## Installation
 
@@ -34,9 +34,9 @@ The dictionary can be inspected in two ways. First, by moving the mouse into the
 
 To alter entries in the dictionary, select an entry and press the **-** button, which will remove the entry from the list and make the *wrong word* the current word. 
 
-There is two ways of including a dictionary: It can be from an *.pldict* file or it can be imported from a text file. In both cases entries not presently included in any current dictionary will be added to the current dictionary. When importing from text file you must adhere to the following format: 1) one line per entry and 2) wrong and correct word form must be separated by `Settings/Separator`. Also make sure that the last line is not empty.
+There is two ways of including a dictionary: It can be from an *.mancodict* file or it can be imported from a text file. In both cases entries not presently included in any current dictionary will be added to the current dictionary. When importing from text file you must adhere to the following format: 1) one line per entry and 2) wrong and correct word form must be separated by `Settings/Separator`. Also make sure that the last line is not empty.
 
-To save a dictionary use `File/Save/Dictionary`. The file will be stored in pylap's dictionary file format *.pldict*. 
+To save a dictionary use `File/Save/Dictionary`. The file will be stored in pylap's dictionary file format *.mancodict*. 
 
 ### Processing
 
